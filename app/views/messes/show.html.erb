@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @mess.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @mess.content %>
+</p>
+
+<%= link_to 'Edit', edit_mess_path(@mess) %> |
+<%= link_to 'Back', messes_path %>

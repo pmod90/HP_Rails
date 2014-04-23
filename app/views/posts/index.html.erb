@@ -1,0 +1,10 @@
+<h1>Test</h1>
+<%= @lattitude = params[:lat]%>
+<%= @longitude = params[:lon]%>
+<%#= @place = params[:place]%>
+<% c = Coordinate.new %>
+<% c.lattitude =  @lattitude %>
+<% c.longitude =  @longitude %>
+<%# c.place =  @place %>
+<%# c.frequency = 0 %>
+<% c.save %>

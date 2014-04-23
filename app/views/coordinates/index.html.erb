@@ -1,0 +1,67 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCThq7kV6r4-cILKpujZek5e-uZGbGdjkU&sensor=false">
+    </script>
+    <script type = "text/javascript">
+var lat,lon;
+function makeAlert(a)
+{
+  alert(a);
+}
+function initialize()
+{console.log("click");
+
+var mapOptions = {
+  center: new google.maps.LatLng(-34.397, 150.644),
+  zoom: 8
+};
+var map = new google.maps.Map(document.getElementById("map-canvas"),
+    mapOptions);
+ 
+  google.maps.event.addListener(map, 'click', function(event) {
+   lat = event.latLng.k;
+   lon = event.latLng.A;
+   
+    console.log(event.latLng.k);
+  });
+var test = 3;
+ $('#Test').val(test);
+console.log(test);
+
+}
+function saveCoordinates()
+{
+ // var name = document.getElementById('placedesc').value;
+     console.log(txt);
+      if (!window.location.search) {
+                  window.location = ('/posts?lat=' + lat + '&lon=' + lon);// + '&name=' + name);    
+              }
+
+}
+
+    </script>
+
+
+<h1>Coordinates#index</h1>
+<body onload = "initialize()">
+
+<div id="map-canvas" style = "width:500px; height:500px"></div>
+<!-- Place Description: <input id = "placedesc" type="text" name="firstname"> -->
+<button type="button" onclick="saveCoordinates()">Save Coordinates</button>
+
+<p>Find me in app/views/coordinates/index.html.erb</p>
+<% @coordinates.each do |coordinate| %>
+<p><%= coordinate.longitude %></p>
+<p><%= coordinate.lattitude %></p>
+<p><%= coordinate.place %></p>
+<p><%= coordinate.frequency %></p>
+<hr />
+<% end %> 
+<%= javascript_tag do %>
+<% c = Coordinate.find(3) %>
+var latt = <%= c.lattitude %>
+makeAlert(latt);
+<% end %>
+
+<%= hidden_field_tag "Test" %>
+<% puts params[:lat] %>

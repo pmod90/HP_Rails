@@ -1,0 +1,29 @@
+<h1>Listing messes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messes.each do |mess| %>
+      <tr>
+        <td><%= mess.title %></td>
+        <td><%= mess.content %></td>
+        <td><%= link_to 'Show', mess %></td>
+        <td><%= link_to 'Edit', edit_mess_path(mess) %></td>
+        <td><%= link_to 'Destroy', mess, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mess', new_mess_path %>
